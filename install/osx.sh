@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
 install() {
   echo osx install
   brew
@@ -25,9 +27,17 @@ iterm2() {
 zsh() {
   echo install oh-my-zsh...
   brew install zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo oh-my-zsh installed.
+  . $DIR/base.sh zsh
+  echo zsh installed.
   echo
 }
 
-install
+vim() {
+  echo installing vim...
+  brew install vim
+  . $DIR/base.sh vim
+  echo vim installed.
+  echo
+}
+
+eval $@

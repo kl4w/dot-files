@@ -16,7 +16,7 @@ ostype() {
 install() {
   echo $OSTYPE
   ostype
-  . $DIR/install/${os}.sh
+  . $DIR/install/${os}.sh install
 }
 
 install

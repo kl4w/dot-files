@@ -6,4 +6,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 let g:NERDTreeMouseMode=2
 let g:NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeWinPos = "right"
