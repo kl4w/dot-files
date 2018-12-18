@@ -4,12 +4,12 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 install() {
   echo osx install
-  brew
+  homebrew
   iterm2
   zsh
 }
 
-brew() {
+homebrew() {
   echo installing brew...
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew tap caskroom/cask

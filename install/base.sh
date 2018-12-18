@@ -7,3 +7,5 @@ zsh() {
 vim() {
   cp -R $DIR/../files/.vim* $HOME/
 }
+
+eval $@
