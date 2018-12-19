@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-tools=(base git guake vim zsh)
+tools=(base git guake vim zsh docker)
 
 install_base() {
   sudo apt-get update
@@ -28,4 +28,14 @@ install_zsh() {
 install_vim() {
   sudo apt-get -y install vim
   ( ./base.sh vim )
+}
+
+install_docker() {
+  sudo apt -y install apt-transport-https ca-certificates curl software-properties-common
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+  sudo apt update
+  apt-cache policy docker-ce
+  sudo apt -y install docker-ce
+  sudo usermod -aG docker ${USER}
 }
