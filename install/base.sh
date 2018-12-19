@@ -1,11 +1,13 @@
-#!/bin/bash
+#!/bin/bash -x
 
 zsh() {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sudo chsh -s $(which zsh) $USER
+  curl -L -o zsh_install.sh https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+  ( SHELL=$(which zsh) ./zsh_install.sh )
 }
 
 vim() {
-  cp -R $DIR/../files/.vim* $HOME/
+  cp -R ../files/.vim* $HOME/
 }
 
 eval $@

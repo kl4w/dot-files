@@ -1,11 +1,10 @@
-#!/bin/bash
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+#!/bin/bash -x
 
 install() {
   echo osx install
   homebrew
   iterm2
+  vim
   zsh
 }
 
@@ -27,7 +26,7 @@ iterm2() {
 zsh() {
   echo install oh-my-zsh...
   brew install zsh
-  . $DIR/base.sh zsh
+  ( ./base.sh zsh )
   echo zsh installed.
   echo
 }
@@ -35,7 +34,7 @@ zsh() {
 vim() {
   echo installing vim...
   brew install vim
-  . $DIR/base.sh vim
+  ( ./base.sh vim )
   echo vim installed.
   echo
 }

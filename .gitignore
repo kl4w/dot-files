@@ -2,3 +2,4 @@ autoload
 plugged
 *.txt
 .vagrant
+zsh_install.sh

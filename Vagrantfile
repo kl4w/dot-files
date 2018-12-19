@@ -1,7 +1,17 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Returns true if `GUI` environment variable is set to a non-empty value.
+# Defaults to false
+def gui_enabled?
+  !ENV.fetch('GUI', '').empty?
+end
+
 Vagrant.configure("2") do |config|
+
+  config.vm.provider 'virtualbox' do |v|
+    v.gui = gui_enabled?
+  end
 
   # https://github.com/hashicorp/vagrant/issues/10234
   # https://askubuntu.com/questions/412525/vagrant-up-and-annoying-nfs-password-asking
