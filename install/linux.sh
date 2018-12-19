@@ -1,27 +1,21 @@
 #!/bin/bash -x
 
-install() {
-  echo linux install
+tools=(base git guake vim zsh)
+
+install_base() {
   sudo apt-get update
-  base
-  guake
-  vim
-  zsh
+  sudo apt-get install -y curl
 }
 
-base() {
-  sudo apt-get install -y git-core curl
+install_git() {
+  sudo apt-get install -y git-all
 }
 
-guake() {
-  echo installing guake...
+install_guake() {
   sudo apt-get -y install guake
-  echo guake installed.
-  echo
 }
 
-zsh() {
-  echo installing zsh...
+install_zsh() {
   sudo apt-get -y install zsh
 
   # https://github.com/robbyrussell/oh-my-zsh/issues/1224#issuecomment-31623113
@@ -29,16 +23,9 @@ zsh() {
 
   ( ./base.sh zsh )
   sudo mv /etc/pam.d/chsh.bak /etc/pam.d/chsh
-  echo zsh installed.
-  echo
 }
 
-vim() {
-  echo installing vim...
+install_vim() {
   sudo apt-get -y install vim
   ( ./base.sh vim )
-  echo vim installed.
-  echo
 }
-
-eval $@

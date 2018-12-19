@@ -1,42 +1,26 @@
 #!/bin/bash -x
 
-install() {
-  echo osx install
-  homebrew
-  iterm2
-  vim
-  zsh
-}
+tools=(homebrew git iterm2 vim zsh)
 
-homebrew() {
-  echo installing brew...
+install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew tap caskroom/cask
-  echo brew installed!
-  echo
 }
 
-iterm2() {
-  echo installing iterm2...
+install_git() {
+  brew install git
+}
+
+install_iterm2() {
   brew cask install iterm2
-  echo iterm2 installed.
-  echo
 }
 
-zsh() {
-  echo install oh-my-zsh...
+install_zsh() {
   brew install zsh
   ( ./base.sh zsh )
-  echo zsh installed.
-  echo
 }
 
-vim() {
-  echo installing vim...
+install_vim() {
   brew install vim
   ( ./base.sh vim )
-  echo vim installed.
-  echo
 }
-
-eval $@

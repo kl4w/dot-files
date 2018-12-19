@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
@@ -17,7 +17,13 @@ install() {
   echo $OSTYPE
   ostype
   pushd $DIR/install
-  . ${os}.sh install
+  source ${os}.sh
+  for tool in ${tools[@]}; do
+    echo Installing ${tool}...
+    install_${tool}
+    echo $tool installed.
+    echo
+  done
   popd
 }
 
