@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-tools=(homebrew git iterm2 vim zsh docker)
+tools=(homebrew git iterm2 vim zsh docker asdf)
 
 install_homebrew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -17,12 +17,12 @@ install_iterm2() {
 
 install_zsh() {
   brew install zsh
-  ( ./base.sh zsh )
+  ( ./base.sh install_zsh )
 }
 
 install_vim() {
   brew install vim
-  ( ./base.sh vim )
+  ( ./base.sh install_vim )
 }
 
 install_docker() {
@@ -30,4 +30,9 @@ install_docker() {
   sudo hdiutil attach ~/Downloads/Docker.dmg
   sudo cp -r /Volumes/Docker/Docker.app /Applications/
   sudo hdiutil detach /Volumes/Docker
+}
+
+install_asdf() {
+  brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
+  ( ./base.sh install_asdf )
 }
